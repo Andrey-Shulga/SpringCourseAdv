@@ -1,3 +1,15 @@
+import beans.models.Auditorium;
+import beans.models.Event;
+import beans.models.Rate;
+import beans.models.User;
+import beans.services.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Dmytro_Babichev
@@ -8,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
         AuditoriumService auditoriumService = (AuditoriumService) ctx.getBean("auditoriumServiceImpl");
         BookingService bookingService = (BookingService) ctx.getBean("bookingServiceImpl");
@@ -16,7 +28,26 @@ public class Main {
         UserService userService = (UserService) ctx.getBean("userServiceImpl");
         DiscountService discountService = (DiscountService) ctx.getBean("discountServiceImpl");
 
-        String email = "dmitriy.vbabichev@gmail.com";
+        Auditorium blueHall = new Auditorium("Blue Hall", 500, Arrays.asList(23, 24, 25, 26));
+        Auditorium yellowHall = new Auditorium("Yellow Hall", 800, Arrays.asList(23, 24, 25, 26, 32, 34, 36, 38));
+        Auditorium redHall = new Auditorium("Red Hall", 1000, Arrays.asList(23, 24, 25, 26, 32, 34, 36, 38, 52, 54, 56, 58, 60));
+        auditoriumService.save(blueHall);
+        auditoriumService.save(yellowHall);
+        auditoriumService.save(redHall);
+
+        Event greatEvent = new Event("Great Show", Rate.HIGH, 300, LocalDateTime.of(2017, 2, 12, 12, 13), blueHall);
+        Event midEvent = new Event("Middle Show", Rate.MID, 200, LocalDateTime.of(2017, 2, 19, 11, 45), yellowHall);
+        Event lowEvent = new Event("Small Show", Rate.LOW, 100, LocalDateTime.of(2017, 9, 24, 10, 35), redHall);
+        eventService.create(greatEvent);
+        eventService.create(midEvent);
+        eventService.create(lowEvent);
+
+        User userIvanov = new User("test1@email.com", "Ivanov", LocalDate.of(1983, 3, 21));
+        User userPetrov = new User("test2@email.com", "Petrov", LocalDate.of(1986, 5, 11));
+        userService.register(userIvanov);
+        userService.register(userPetrov);
+
+        /*String email = "dmitriy.vbabichev@gmail.com";
         String name = "Dmytro Babichev";
         String eventName = "The revenant";
         String auditoriumName = "Blue hall";

@@ -19,4 +19,6 @@ public interface AuditoriumDAO {
     void delete(Auditorium auditorium);
 
     Auditorium add(Auditorium auditorium);
+
+
 }

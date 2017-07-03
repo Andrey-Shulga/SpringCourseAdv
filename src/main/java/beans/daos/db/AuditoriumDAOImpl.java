@@ -34,6 +34,7 @@ public class AuditoriumDAOImpl extends AbstractDAO implements AuditoriumDAO {
         return auditorium.withId(id);
     }
 
+
     @Override
     public void delete(Auditorium auditorium) {
         getCurrentSession().delete(auditorium);

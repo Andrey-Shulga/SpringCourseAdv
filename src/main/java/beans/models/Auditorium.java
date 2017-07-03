@@ -2,6 +2,7 @@ package beans.models;
 
 import util.CsvUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * Date: 2/1/2016
  * Time: 7:55 PM
  */
-public class Auditorium {
+public class Auditorium implements Serializable {
 
     private long id;
     private String name;
