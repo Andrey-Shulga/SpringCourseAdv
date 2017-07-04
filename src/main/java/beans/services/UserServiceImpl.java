@@ -10,12 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:30 PM
- */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -49,5 +43,11 @@ public class UserServiceImpl implements UserService {
 
     public List<Ticket> getBookedTickets() {
         throw new UnsupportedOperationException("not implemented yet");
+    }
+
+    @Override
+    public List<User> getUsers() {
+
+        return userDAO.getAll();
     }
 }
