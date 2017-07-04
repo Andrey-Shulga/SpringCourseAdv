@@ -10,12 +10,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/4/2016
- * Time: 12:06 PM
- */
 public class Main {
 
     public static void main(String[] args) {
