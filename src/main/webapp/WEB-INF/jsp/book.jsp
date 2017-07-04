@@ -5,122 +5,141 @@
 <head>
     <title>Booking</title>
 </head>
+
 <body>
 <a href="/">Booking page</a>
 
 <hr>
-<br>
-<b>List of register users:</b><br>
-<table border='1'>
-    <thead>
-    <tr>
-        <th scope='colgroup' width="60px">Email</th>
-        <th scope='colgroup' width="60px">Name</th>
-        <th scope='colgroup' width="80px">Birth date</th>
+<table>
 
-    </tr>
-    </thead>
-    <c:forEach var="user" items="${userList}">
-        <tr align="center">
-            <td>
-                    ${user.email}
-            </td>
-            <td>
-                    ${user.name}
-            </td>
-            <td>
-                    ${user.birthday}
-            </td>
 
-        </tr>
+    <th>
 
-    </c:forEach>
-</table>
-<b>List of Auditoriums:</b><br>
-<table border='1'>
-    <thead>
-    <tr>
-        <th scope='colgroup' width="80px">Name</th>
-        <th scope='colgroup' width="130px">Seats number</th>
-        <th scope='colgroup' width="50px">VIP seats</th>
+        <table border='1'>
+            <b>List of register users:</b><br>
+            <thead>
+            <tr>
+                <th scope='colgroup' width="60px">Email</th>
+                <th scope='colgroup' width="60px">Name</th>
+                <th scope='colgroup' width="80px">Birth date</th>
 
-    </tr>
-    </thead>
-    <c:forEach var="aud" items="${auditoriumList}">
-        <tr align="center">
-            <td>
-                    ${aud.name}
-            </td>
-            <td>
-                    ${aud.seatsNumber}
-            </td>
-            <td>
-                    ${aud.vipSeats}
-            </td>
+            </tr>
+            </thead>
+            <c:forEach var="user" items="${userList}">
+                <tr align="center">
+                    <td>
+                            ${user.email}
+                    </td>
+                    <td>
+                            ${user.name}
+                    </td>
+                    <td>
+                            ${user.birthday}
+                    </td>
 
-        </tr>
+                </tr>
 
-    </c:forEach>
-</table>
+            </c:forEach>
+        </table>
+    </th>
+    <th>
+        <table border='1'>
+            <b>List of Auditoriums:</b><br>
+            <thead>
+            <tr>
+                <th scope='colgroup' width="80px">Name</th>
+                <th scope='colgroup' width="130px">Seats number</th>
+                <th scope='colgroup' width="50px">VIP seats</th>
 
-<b>List of Events:</b><br>
-<table border='1'>
-    <thead>
-    <tr>
-        <th scope='colgroup' width="90px">Name</th>
-        <th scope='colgroup' width="50px">Rate</th>
-        <th scope='colgroup' width="130px">Price per ticket</th>
-        <th scope='colgroup' width="120px">Date</th>
-        <th scope='colgroup' width="90px">Hall</th>
+            </tr>
+            </thead>
+            <c:forEach var="aud" items="${auditoriumList}">
+                <tr align="center">
+                    <td>
+                            ${aud.name}
+                    </td>
+                    <td>
+                            ${aud.seatsNumber}
+                    </td>
+                    <td>
+                            ${aud.vipSeats}
+                    </td>
 
-    </tr>
-    </thead>
-    <c:forEach var="event" items="${eventList}">
-        <tr align="center">
-            <td>
-                    ${event.name}
-            </td>
-            <td>
-                    ${event.rate}
-            </td>
-            <td>
-                    ${event.basePrice}
-            </td>
-            <td>
-                    ${event.dateTime}
-            </td>
-            <td>
-                    ${event.auditorium.name}
-            </td>
+                </tr>
 
-        </tr>
+            </c:forEach>
+        </table>
 
-    </c:forEach>
+    </th>
+    <th>
+        <table border='1'>
+            <b>List of Events:</b><br>
+            <thead>
+            <tr>
+                <th scope='colgroup' width="90px">Name</th>
+                <th scope='colgroup' width="50px">Rate</th>
+                <th scope='colgroup' width="130px">Price per ticket</th>
+                <th scope='colgroup' width="120px">Date</th>
+                <th scope='colgroup' width="90px">Hall</th>
+
+            </tr>
+            </thead>
+            <c:forEach var="event" items="${eventList}">
+                <tr align="center">
+                    <td>
+                            ${event.name}
+                    </td>
+                    <td>
+                            ${event.rate}
+                    </td>
+                    <td>
+                            ${event.basePrice}
+                    </td>
+                    <td>
+                            ${event.dateTime}
+                    </td>
+                    <td>
+                            ${event.auditorium.name}
+                    </td>
+
+                </tr>
+
+            </c:forEach>
+        </table>
+    </th>
 </table>
 <br>
 <form name="registerForm" action="/price" method="get">
-    <label for="eventName"><b>Event Name</b></label>
-    <br>
-    <input type="text" name="eventName" id="eventName" value="Great Show"><br>
+    <table>
+        <th>
+            <label for="eventName"><b>Event Name</b></label>
+            <br>
+            <input type="text" name="eventName" id="eventName" value="Great Show">
+        </th>
+        <th>
+            <label for="audName"><b>Auditorium Name</b></label>
+            <br>
+            <input type="text" name="audName" id="audName" value="Blue Hall">
+        </th>
 
-    <label for="audName"><b>Auditorium Name</b></label>
-    <br>
-    <input type="text" name="audName" id="audName" value="Blue Hall"><br>
+        <th>
+            <label for="date"><b>Date</b></label>
+            <br>
+            <input type="text" name="date" id="date" value="2017-02-12T12:13">
+        </th>
+        <th>
+            <label for="seats"><b>Seats(comma separator)</b></label>
+            <br>
+            <input type="text" name="seats" id="seats" value="25,26,27">
+        </th>
+        <th>
+            <label for="email"><b>Registered user email</b></label>
+            <br>
+            <input type="text" name="email" id="email" value="test1@email.com">
+        </th>
 
-    <label for="date"><b>Date</b></label>
-    <br>
-    <input type="text" name="date" id="date" value="2017-02-12T12:13"><br>
-
-    <label for="seats"><b>Seats(comma separator)</b></label>
-    <br>
-    <input type="text" name="seats" id="seats" value="25,26,27"><br>
-
-    <label for="email"><b>Registered user email</b></label>
-    <br>
-    <input type="text" name="email" id="email" value="test1@email.com">
-    <br>
+    </table>
     <button type="submit">Get ticket's price</button>
-
 </form>
 </body>
 </html>
