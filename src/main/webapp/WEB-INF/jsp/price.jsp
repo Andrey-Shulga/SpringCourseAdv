@@ -5,6 +5,7 @@
 </head>
 <body>
 <a href="/">Booking page</a>
+<a href="getTicketList">Tickets list</a>
 
 <hr>
 <br>

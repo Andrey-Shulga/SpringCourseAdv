@@ -8,13 +8,11 @@
 
 <body>
 <a href="/">Booking page</a>
+<a href="getTicketList">Tickets list</a>
 
 <hr>
 <table>
-
-
     <th>
-
         <table border='1'>
             <b>List of register users:</b><br>
             <thead>
@@ -109,37 +107,98 @@
     </th>
 </table>
 <br>
-<form name="registerForm" action="/price" method="get">
+<form action="price" method="get">
     <table>
         <th>
-            <label for="eventName"><b>Event Name</b></label>
+            <label><b>Event Name</b></label>
             <br>
-            <input type="text" name="eventName" id="eventName" value="Great Show">
+            <input type="text" name="eventName" value="Great Show">
         </th>
         <th>
-            <label for="audName"><b>Auditorium Name</b></label>
+            <label><b>Auditorium Name</b></label>
             <br>
-            <input type="text" name="audName" id="audName" value="Blue Hall">
+            <input type="text" name="audName" value="Blue Hall">
         </th>
 
         <th>
-            <label for="date"><b>Date</b></label>
+            <label><b>Date</b></label>
             <br>
-            <input type="text" name="date" id="date" value="2017-02-12T12:13">
+            <input type="text" name="date" value="2017-02-12T12:13">
         </th>
         <th>
-            <label for="seats"><b>Seats(comma separator)</b></label>
+            <label><b>Seats(comma separator)</b></label>
             <br>
-            <input type="text" name="seats" id="seats" value="25,26,27">
+            <input type="text" name="seats" value="25,26,27">
         </th>
         <th>
-            <label for="email"><b>Registered user email</b></label>
+            <label><b>Registered user email</b></label>
             <br>
-            <input type="text" name="email" id="email" value="test1@email.com">
+            <input type="text" name="email" value="test1@email.com">
         </th>
 
     </table>
     <button type="submit">Get ticket's price</button>
 </form>
+<br>
+<form action="bookTicket" method="post">
+    <table>
+        <th>
+            <label><b>Event Name</b></label>
+            <br>
+            <input type="text" name="eventName" value="Great Show">
+        </th>
+        <th>
+            <label><b>Auditorium Name</b></label>
+            <br>
+            <input type="text" name="audName" value="Blue Hall">
+        </th>
+
+        <th>
+            <label><b>Date</b></label>
+            <br>
+            <input type="text" name="date" value="2017-02-12T12:13">
+        </th>
+        <th>
+            <label><b>Seats(comma separator)</b></label>
+            <br>
+            <input type="text" name="seats" value="25,26,27">
+        </th>
+        <th>
+            <label><b>Registered user email</b></label>
+            <br>
+            <input type="text" name="email" value="test1@email.com">
+        </th>
+
+    </table>
+    <button type="submit">Book ticket</button>
+
+    ${result}
+
+</form>
+
+<form action="ticketList" method="get">
+    <table>
+        <th>
+            <label><b>Event Name</b></label>
+            <br>
+            <input type="text" name="eventName" value="Great Show">
+        </th>
+        <th>
+            <label><b>Auditorium Name</b></label>
+            <br>
+            <input type="text" name="audName" value="Blue Hall">
+        </th>
+
+        <th>
+            <label><b>Date</b></label>
+            <br>
+            <input type="text" name="date" value="2017-02-12T12:13">
+        </th>
+
+
+    </table>
+    <button type="submit">Get event tickets</button>
+</form>
+
 </body>
 </html>
