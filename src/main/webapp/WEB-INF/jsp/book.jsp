@@ -9,6 +9,7 @@
 <body>
 <a href="/">Booking page</a>
 <a href="getTicketList">Tickets list</a>
+<a href="freemarker">Freemarker</a>
 
 <hr>
 <table>

@@ -38,6 +38,7 @@ public class Main {
 
         User userIvanov = new User("test1@email.com", "Ivanov", LocalDate.of(1983, 3, 21));
         User userPetrov = new User("test2@email.com", "Petrov", LocalDate.of(1986, 5, 11));
+        User userAnotherIvanov = new User("test3@email.com", "Ivanov", LocalDate.of(1990, 1, 3));
         userService.register(userIvanov);
         userService.register(userPetrov);
 
