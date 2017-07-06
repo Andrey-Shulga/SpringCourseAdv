@@ -1,5 +1,6 @@
 package beans.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -8,7 +9,7 @@ import java.time.LocalDate;
  * Date: 2/1/2016
  * Time: 7:35 PM
  */
-public class User {
+public class User implements Serializable{
 
     private long id;
     private String email;

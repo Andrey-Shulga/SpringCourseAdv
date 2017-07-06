@@ -9,7 +9,7 @@
 <a href="getTicketList">Tickets list</a>
 <a href="freemarker">Freemarker</a>
 <a href="openPdf">Pdf</a>
-
+<a href="openFileForm">Batch upload</a>
 <hr>
 
 <br>

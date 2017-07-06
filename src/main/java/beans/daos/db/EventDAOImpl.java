@@ -25,15 +25,15 @@ public class EventDAOImpl extends AbstractDAO implements EventDAO {
     public Event create(Event event) {
         System.out.println("Creating " + event);
         EventDAO.validateEvent(event);
-        List<Event> byAuditoriumAndDate = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
+        /*List<Event> byAuditoriumAndDate = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
         if (byAuditoriumAndDate.size() > 0) {
             throw new IllegalStateException(String.format(
                     "Unable to store event: [%s]. Event with such auditorium: [%s] on date: [%s] is already created.",
                     event, event.getAuditorium(), event.getDateTime()));
-        } else {
+        } else {*/
             Long eventId = (Long) getCurrentSession().save(event);
             return event.withId(eventId);
-        }
+        /*}*/
     }
 
     @Override

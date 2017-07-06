@@ -1,0 +1,45 @@
+{
+  "batch":[
+          {
+            "model": "user",
+            "name":"Sidorov",
+            "email":"test4@email.com",
+            "birthday":"1991-12-23"
+          },
+          {
+            "model": "user",
+            "name":"Pavlov",
+            "email":"test5@email.com",
+            "birthday":"1989-11-01"
+          },
+
+          {
+            "model": "event",
+            "name":"Film1",
+            "rate":"LOW",
+            "basePrice":200,
+            "dateTime": "2017-12-12T12:43",
+            "auditorium":
+                        {
+                          "name":"Blue Hall",
+                          "seatsNumber": 300,
+                          "vipSeats":"21,22,23"
+                        }
+          },
+          {
+            "model": "event",
+            "name":"Film2",
+            "rate":"HIGH",
+            "basePrice":400,
+            "dateTime": "2017-11-24T11:13",
+            "auditorium":
+                        {
+                          "name":"Red Hall",
+                          "seatsNumber": 500,
+                          "vipSeats":"41,42,43"
+                        }
+          }
+
+        ]
+}
+

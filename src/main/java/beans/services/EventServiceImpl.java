@@ -1,5 +1,6 @@
 package beans.services;
 
+import beans.daos.AuditoriumDAO;
 import beans.daos.EventDAO;
 import beans.models.Auditorium;
 import beans.models.Event;
@@ -21,7 +22,9 @@ import java.util.List;
 @Transactional
 public class EventServiceImpl implements EventService {
 
-    private final EventDAO eventDAO;
+    private EventDAO eventDAO;
+    @Autowired
+    private AuditoriumDAO auditoriumDAO;
 
     @Autowired
     public EventServiceImpl(@Qualifier("eventDAO") EventDAO eventDAO) {
@@ -29,6 +32,9 @@ public class EventServiceImpl implements EventService {
     }
 
     public Event create(Event event) {
+
+        Auditorium foundAud = auditoriumDAO.getByName(event.getAuditorium().getName());
+        event.setAuditorium(foundAud);
         return eventDAO.create(event);
     }
 
