@@ -21,7 +21,7 @@ public class FreemarkerController {
     private UserService userService;
 
     @RequestMapping(value = "/freemarker", method = RequestMethod.GET)
-    public String freemarker(@RequestParam Map<String, String> requestParams, ModelMap map) {
+    public String freemarker() {
 
         return "template";
     }

@@ -115,8 +115,6 @@ public class BookController {
         String date = requestParams.get("date");
         LocalDateTime dateTime = getStrToLocalDateTime(date);
 
-        Auditorium auditorium = auditoriumService.getByName(audName);
-        Event event = eventService.getEvent(eventName, auditorium, dateTime);
         List<Ticket> ticketList = bookingService.getTicketsForEvent(eventName, audName, dateTime);
         map.put("ticketList", ticketList);
 

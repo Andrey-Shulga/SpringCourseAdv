@@ -8,6 +8,8 @@
 <a href="/">Booking page</a>
 <a href="getTicketList">Tickets list</a>
 <a href="freemarker">Freemarker</a>
+<a href="openPdf">Pdf</a>
+
 <hr>
 
 <br>
