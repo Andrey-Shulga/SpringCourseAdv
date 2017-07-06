@@ -40,7 +40,6 @@ public class FreemarkerController {
 
         String name = requestParams.get("name");
         List<User> userList = userService.getUsersByName(name);
-        System.out.println(userList);
         map.addAttribute("userList", userList);
         return "template";
     }

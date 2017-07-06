@@ -31,7 +31,7 @@ birthday: ${user.birthday}<br>
 <fieldset>
     <legend>Search all users by name</legend>
     <form action="/getUsersWithName" method="get">
-        <label><b>Enter email</b></label>
+        <label><b>Enter user name</b></label>
         <br>
         <input type="text" name="name" value="Ivanov">
         <input type="submit" value="Get users"/>
