@@ -28,7 +28,7 @@ public class PdfController {
         return "pdf";
     }
 
-    @RequestMapping (value ="/getPdf", headers="accept=application/pdf", method = RequestMethod.GET)
+    @RequestMapping (headers="accept=application/pdf", method = RequestMethod.GET)
     public String getPdf(@RequestParam Map<String, String> requestParams, ModelMap map){
 
         String eventName = requestParams.get("eventName");

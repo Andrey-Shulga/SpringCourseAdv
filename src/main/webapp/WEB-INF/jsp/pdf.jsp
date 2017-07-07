@@ -11,7 +11,7 @@
 <a href="openFileForm">Batch upload</a>
 <hr>
 <b>Get booked tickets by event in PDF format.</b>
-<form action="getPdf" method="get">
+<form action="getPdf" method="get" content="application/pdf" >
     <table>
         <th>
             <label><b>Event Name</b></label>
