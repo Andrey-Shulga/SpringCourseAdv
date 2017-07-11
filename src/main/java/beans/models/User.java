@@ -15,23 +15,27 @@ public class User implements Serializable{
     private String email;
     private String name;
     private LocalDate birthday;
+    private String password;
+    private String role;
 
     public User() {
     }
 
-    public User(long id, String email, String name, LocalDate birthday) {
+    public User(long id, String email, String name, LocalDate birthday, String password, String role) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.birthday = birthday;
+        this.password=password;
+        this.role=role;
     }
 
-    public User(String email, String name, LocalDate birthday) {
-        this(-1, email, name, birthday);
+    public User(String email, String name, LocalDate birthday, String password, String role) {
+        this(-1, email, name, birthday, password, role);
     }
 
     public User withId(long id) {
-        return new User(id, email, name, birthday);
+        return new User(id, email, name, birthday, password, role);
     }
 
     public long getId() {
@@ -40,6 +44,22 @@ public class User implements Serializable{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {

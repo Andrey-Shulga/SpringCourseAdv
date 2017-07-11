@@ -1,0 +1,48 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <global-method-security secured-annotations="enabled"/>
+
+    <http pattern="/resources/**" security="none"/>
+
+    <http auto-config="true" use-expressions="true">
+
+        <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
+        <!--<intercept-url pattern="/" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/login.jsp*" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/admin" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/exitUser*" access="isFullyAuthenticated() or isAnonymous()"/>-->
+        <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/login.html" access="hasRole('ROLE_ANONYMOUS')"/>
+       <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>
+
+        <form-login login-page="/login.html" authentication-failure-url="/login.html?error=true"/>
+
+        <access-denied-handler error-page="/403"/>
+
+        <logout logout-url="/logout" logout-success-url="/"/>
+
+        <remember-me user-service-ref="myUserDetailsService" key="myKey" token-validity-seconds="300"/>
+
+        <csrf disabled="true"/>
+
+    </http>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="myUserDetailsService">
+            <password-encoder ref="bcryptBean"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="bcryptBean" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="12"/>
+    </beans:bean>
+
+
+</beans:beans>

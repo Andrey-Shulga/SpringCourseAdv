@@ -1,9 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
 <html>
 <head>
-    <title>File</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 </head>
 <body>
 <security:authorize access="hasAnyRole('REGISTERED_USER','BOOKING_MANAGER')" var="isUSer"/>
@@ -18,18 +21,9 @@
 
 </div>
 <hr>
-<a href="/">Booking page</a>
-<a href="getTicketList">Tickets list</a>
-<a href="freemarker">Freemarker</a>
-<a href="openPdf">Pdf</a>
-<a href="openFileForm">Batch upload</a>
+<div id="body">
+    <h2 align="center">Access Denied!</h2>
 
-<hr>
-<form method="POST" action="uploadFile" enctype="multipart/form-data">
-    Valid JSON file to upload: <input type="file" name="file"><br />
-
-    <input type="submit" value="Upload">
-
-</form>
+</div>
 </body>
 </html>

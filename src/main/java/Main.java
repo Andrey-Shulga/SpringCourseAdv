@@ -36,11 +36,12 @@ public class Main {
         eventService.create(midEvent);
         eventService.create(lowEvent);
 
-        User userIvanov = new User("test1@email.com", "Ivanov", LocalDate.of(1983, 3, 21));
-        User userPetrov = new User("test2@email.com", "Petrov", LocalDate.of(1986, 5, 11));
-        User userAnotherIvanov = new User("test3@email.com", "Ivanov", LocalDate.of(1990, 1, 3));
+        User userIvanov = new User("test1@email.com", "Ivanov", LocalDate.of(1983, 3, 21), "$2a$12$vKjJ.JwaKnxLSt6GzZX9Ee/a9EYyUj5flb8zstcAEBl5LZVunuc5S", "ROLE_REGISTERED_USER");
+        User userPetrov = new User("test2@email.com", "Petrov", LocalDate.of(1986, 5, 11), "$2a$12$1YNl2i/O.OXNXqYmdGGKNOX2d/KO0tN.ibJAMWk/SdQV4bWmzKe3u", "ROLE_REGISTERED_USER, ROLE_BOOKING_MANAGER");
+        User userAnotherIvanov = new User("test3@email.com", "Ivanov", LocalDate.of(1990, 1, 3), "$2a$12$kE/Bq7vMo9GNk6K0bZkHDezdqN8vzUzVWvKKidQzix3V5HAB1lW8K", "ROLE_REGISTERED_USER");
         userService.register(userIvanov);
         userService.register(userPetrov);
+        userService.register(userAnotherIvanov);
 
         /*String email = "dmitriy.vbabichev@gmail.com";
         String name = "Dmytro Babichev";
