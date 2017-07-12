@@ -21,6 +21,15 @@
 
 </div>
 <hr>
+<a href="/">Booking page</a>
+<a href="getTicketList">Tickets list</a>
+<a href="freemarker">Freemarker</a>
+<a href="openPdf">Pdf</a>
+<a href="openFileForm">Batch upload</a>
+<hr>
+
+</div>
+<hr>
 <div id="body">
     <h2 align="center">Access Denied!</h2>
 

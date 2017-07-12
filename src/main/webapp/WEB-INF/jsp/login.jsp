@@ -33,12 +33,15 @@
             <span class="error_login" style="font-size: small; color: red; "><b>Incorrect login or password</b></span>
         </c:if>
 
-        <br/>
+        <br>
 
 
 
     </form>
-
+    <br>
+    With role BOOKING_MANAGER:<br>
+    Login: test2@email.com<br>
+    Password: test2
 
 </div>
 </body>

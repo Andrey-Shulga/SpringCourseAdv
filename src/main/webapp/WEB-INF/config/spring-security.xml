@@ -20,6 +20,7 @@
         <intercept-url pattern="/exitUser*" access="isFullyAuthenticated() or isAnonymous()"/>-->
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/login.html" access="hasRole('ROLE_ANONYMOUS')"/>
+        <intercept-url pattern="/ticketList" access="hasRole('BOOKING_MANAGER')"/>
        <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>
 
         <form-login login-page="/login.html" authentication-failure-url="/login.html?error=true"/>

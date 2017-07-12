@@ -213,7 +213,7 @@
 
 
     </table>
-    <button type="submit">Get event tickets</button>
+    <button type="submit">Get event tickets</button> (Only with role BOOKING_MANAGER)
 </form>
 
 </body>
