@@ -23,7 +23,7 @@
 <a href="freemarker">Freemarker</a>
 <a href="openPdf">Pdf</a>
 <a href="openFileForm">Batch upload</a>
-
+<a href="money">Add money</a>
 <hr>
 <form method="POST" action="uploadFile" enctype="multipart/form-data">
     Valid JSON file to upload: <input type="file" name="file"><br />

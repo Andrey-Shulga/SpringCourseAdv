@@ -23,6 +23,7 @@
 <a href="freemarker">Freemarker</a>
 <a href="openPdf">Pdf</a>
 <a href="openFileForm">Batch upload</a>
+<a href="money">Add money</a>
 <hr>
 
 <br>

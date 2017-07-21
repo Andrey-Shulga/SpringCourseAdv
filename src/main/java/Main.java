@@ -1,7 +1,4 @@
-import beans.models.Auditorium;
-import beans.models.Event;
-import beans.models.Rate;
-import beans.models.User;
+import beans.models.*;
 import beans.services.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -36,9 +33,15 @@ public class Main {
         eventService.create(midEvent);
         eventService.create(lowEvent);
 
+        UserAccount userAccountIvanov = new UserAccount(5000);
+        UserAccount userAccountPetrov = new UserAccount(3000);
+        UserAccount userAccountAnotherIvanov = new UserAccount(2000);
         User userIvanov = new User("test1@email.com", "Ivanov", LocalDate.of(1983, 3, 21), "$2a$12$vKjJ.JwaKnxLSt6GzZX9Ee/a9EYyUj5flb8zstcAEBl5LZVunuc5S", "ROLE_REGISTERED_USER");
         User userPetrov = new User("test2@email.com", "Petrov", LocalDate.of(1986, 5, 11), "$2a$12$1YNl2i/O.OXNXqYmdGGKNOX2d/KO0tN.ibJAMWk/SdQV4bWmzKe3u", "ROLE_REGISTERED_USER, ROLE_BOOKING_MANAGER");
         User userAnotherIvanov = new User("test3@email.com", "Ivanov", LocalDate.of(1990, 1, 3), "$2a$12$kE/Bq7vMo9GNk6K0bZkHDezdqN8vzUzVWvKKidQzix3V5HAB1lW8K", "ROLE_REGISTERED_USER");
+        userIvanov.setUserAccount(userAccountIvanov);
+        userPetrov.setUserAccount(userAccountPetrov);
+        userAnotherIvanov.setUserAccount(userAccountAnotherIvanov);
         userService.register(userIvanov);
         userService.register(userPetrov);
         userService.register(userAnotherIvanov);

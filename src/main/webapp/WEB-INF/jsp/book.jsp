@@ -26,6 +26,7 @@
 <a href="freemarker">Freemarker</a>
 <a href="openPdf">Pdf</a>
 <a href="openFileForm">Batch upload</a>
+<a href="money">Add money</a>
 <hr>
 <table>
     <th>
@@ -36,7 +37,7 @@
                 <th scope='colgroup' width="60px">Email</th>
                 <th scope='colgroup' width="60px">Name</th>
                 <th scope='colgroup' width="80px">Birth date</th>
-
+                <th scope='colgroup' width="80px">Money</th>
             </tr>
             </thead>
             <c:forEach var="user" items="${userList}">
@@ -49,6 +50,10 @@
                     </td>
                     <td>
                             ${user.birthday}
+                    </td>
+
+                    <td>
+                            ${user.userAccount.money}
                     </td>
 
                 </tr>
@@ -107,7 +112,7 @@
                             ${event.rate}
                     </td>
                     <td>
-                            ${event.basePrice}
+                            ${event.ticketPrice}
                     </td>
                     <td>
                             ${event.dateTime}

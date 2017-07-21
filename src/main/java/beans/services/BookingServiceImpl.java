@@ -82,7 +82,7 @@ public class BookingServiceImpl implements BookingService {
                             + dateTime + "]");
         }
 
-        final double baseSeatPrice = event.getBasePrice();
+        final double baseSeatPrice = event.getTicketPrice();
         final double rateMultiplier = event.getRate() == Rate.HIGH ? highRatedPriceMultiplier : defaultRateMultiplier;
         final double seatPrice = baseSeatPrice * rateMultiplier;
         final double vipSeatPrice = vipSeatPriceMultiplier * seatPrice;
