@@ -1,13 +1,8 @@
 package beans.controller;
 
-import beans.models.Auditorium;
-import beans.models.Event;
-import beans.models.Ticket;
-import beans.models.User;
-import beans.services.AuditoriumService;
-import beans.services.BookingService;
-import beans.services.EventService;
-import beans.services.UserService;
+import beans.exception.NotEnoughMoneyException;
+import beans.models.*;
+import beans.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -44,6 +39,9 @@ public class BookController {
     @Qualifier("bookingServiceImpl")
     private BookingService bookingService;
 
+    @Autowired
+    private UserAccountService userAccountService;
+
     @RequestMapping("")
     String index(ModelMap map) {
 
@@ -78,27 +76,34 @@ public class BookController {
     }
 
     @RequestMapping(value = "/bookTicket", method = RequestMethod.POST)
-    public ModelAndView bookTicket(@RequestParam Map<String, String> requestParams, ModelMap map) {
+    public ModelAndView bookTicket(@RequestParam Map<String, String> requestParams, ModelMap map) throws NotEnoughMoneyException {
 
-        String eventName = requestParams.get("eventName");
-        String audName = requestParams.get("audName");
-        String date = requestParams.get("date");
-        LocalDateTime dateTime = getStrToLocalDateTime(date);
-        String seats = requestParams.get("seats");
-        List<Integer> intSeats = parseSeatsList(seats);
-        String email = requestParams.get("email");
-
-        Auditorium auditorium = auditoriumService.getByName(audName);
-        Event event = eventService.getEvent(eventName, auditorium, dateTime);
-        User user = userService.getUserByEmail(email);
-
-        double price = bookingService.getTicketPrice(event.getName(), event.getAuditorium().getName(), dateTime, intSeats, user);
-
-        Ticket ticket = new Ticket(event, LocalDateTime.now(), intSeats, user, price);
         try {
+            String eventName = requestParams.get("eventName");
+            String audName = requestParams.get("audName");
+            String date = requestParams.get("date");
+            LocalDateTime dateTime = getStrToLocalDateTime(date);
+            String seats = requestParams.get("seats");
+            List<Integer> intSeats = parseSeatsList(seats);
+            String email = requestParams.get("email");
+
+            Auditorium auditorium = auditoriumService.getByName(audName);
+            Event event = eventService.getEvent(eventName, auditorium, dateTime);
+            User user = userService.getUserByEmail(email);
+
+            double price = bookingService.getTicketPrice(event.getName(), event.getAuditorium().getName(), dateTime, intSeats, user);
+            UserAccount userAccount = user.getUserAccount();
+            if (price > userAccount.getMoney())
+                throw new NotEnoughMoneyException("You have not enough money to buy this ticket. Please fill you account.");
+            userAccount.setMoney(userAccount.getMoney() - price);
+
+            Ticket ticket = new Ticket(event, LocalDateTime.now(), intSeats, user, price);
             Ticket bookedTicked = bookingService.bookTicket(ticket.getUser(), ticket);
-            if (bookedTicked != null)
-                map.put("result", " Success!");
+
+            if (bookedTicked != null) {
+                userAccountService.saveMoney(userAccount);
+                map.put("result", " Success! You booked ticket on that event.");
+            }
         } catch (Exception e) {
             String result = " Fail! " + e.getMessage();
             map.put("result", result);

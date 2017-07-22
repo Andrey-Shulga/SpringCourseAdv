@@ -47,7 +47,7 @@
     </table>
     <button type="submit">Add money</button>
 
-    ${result}
+    ${resultMoney}
 
 </form>
 

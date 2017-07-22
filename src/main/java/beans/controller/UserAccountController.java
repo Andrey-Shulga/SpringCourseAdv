@@ -23,7 +23,8 @@ public class UserAccountController {
     private UserAccountService userAccountService;
 
     @RequestMapping(value = "money", method = RequestMethod.GET)
-    public String showMoneyForm() {
+    public String showMoneyForm(ModelMap map) {
+
         return "money";
     }
 
@@ -42,7 +43,7 @@ public class UserAccountController {
             map.put("result", "Success! " + money + "$ was added in user account");
         } catch (Exception e) {
             String result = " Fail! " + e.getMessage();
-            map.put("result", result);
+            map.put("resultMoney", result);
         }
         return new ModelAndView("money");
     }
