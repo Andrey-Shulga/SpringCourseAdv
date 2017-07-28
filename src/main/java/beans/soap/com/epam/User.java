@@ -56,6 +56,18 @@ public class User {
     protected String role;
     protected UserAccount userAccount;
 
+    public User() {
+    }
+
+    public User(String email, String name, String birthday, String password, String role, UserAccount userAccount) {
+        this.email = email;
+        this.name = name;
+        this.birthday = birthday;
+        this.password = password;
+        this.role = role;
+        this.userAccount = userAccount;
+    }
+
     /**
      * Gets the value of the id property.
      */
@@ -190,4 +202,16 @@ public class User {
         this.userAccount = value;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", userAccount=" + userAccount +
+                '}';
+    }
 }

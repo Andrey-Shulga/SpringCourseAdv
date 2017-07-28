@@ -1,7 +1,6 @@
 package beans.soap;
 
 import beans.models.User;
-import beans.models.UserAccount;
 import beans.services.UserService;
 import beans.soap.com.epam.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,7 @@ public class UserEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getByIdRequest")
     @ResponsePayload
     public GetByIdResponse getById(@RequestPayload GetByIdRequest request) {
+
         GetByIdResponse response = new GetByIdResponse();
         beans.models.User user = userService.getById(request.getId());
         response.setUser(user);
@@ -31,6 +31,7 @@ public class UserEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "registerUserRequest")
     @ResponsePayload
     public RegisterUserResponse registerUser(@RequestPayload RegisterUserRequest request) {
+
         RegisterUserResponse response = new RegisterUserResponse();
         beans.models.User user = new beans.models.User(request.getUser());
         User newUser = userService.register(user);
@@ -42,10 +43,13 @@ public class UserEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "removeUserRequest")
     @ResponsePayload
     public RemoveUserResponse removeUser(@RequestPayload RemoveUserRequest request) {
+
         RemoveUserResponse response = new RemoveUserResponse();
-        User user = new User(request.getId());
-        user.setUserAccount(new UserAccount(user.getId()));
-        userService.remove(user);
+        long id = request.getId();
+        GetByIdRequest getByIdRequest = new GetByIdRequest();
+        getByIdRequest.setId(id);
+        User userToDelete = getById(getByIdRequest).getUser();
+        userService.remove(userToDelete);
 
         return response;
     }

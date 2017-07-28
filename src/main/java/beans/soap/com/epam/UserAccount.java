@@ -41,6 +41,13 @@ public class UserAccount {
     protected long id;
     protected double money;
 
+    public UserAccount() {
+    }
+
+    public UserAccount(double money) {
+        this.money = money;
+    }
+
     /**
      * Gets the value of the id property.
      */
@@ -69,4 +76,11 @@ public class UserAccount {
         this.money = value;
     }
 
+    @Override
+    public String toString() {
+        return "UserAccount{" +
+                "id=" + id +
+                ", money=" + money +
+                '}';
+    }
 }
