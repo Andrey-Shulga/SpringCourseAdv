@@ -34,7 +34,7 @@ public class UserDAOImpl extends AbstractDAO implements UserDAO {
 
     @Override
     public void delete(User user) {
-        UserDAO.validateUser(user);
+        //UserDAO.validateUser(user);
         getCurrentSession().delete(user);
     }
 

@@ -1,5 +1,7 @@
 package beans.soap;
 
+import beans.models.User;
+import beans.models.UserAccount;
 import beans.services.UserService;
 import beans.soap.com.epam.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +32,9 @@ public class UserEndpoint {
     @ResponsePayload
     public RegisterUserResponse registerUser(@RequestPayload RegisterUserRequest request) {
         RegisterUserResponse response = new RegisterUserResponse();
-        beans.models.User user = userService.register(request.getUser());
-        response.setUser(user);
+        beans.models.User user = new beans.models.User(request.getUser());
+        User newUser = userService.register(user);
+        response.setUser(newUser);
 
         return response;
     }
@@ -40,7 +43,9 @@ public class UserEndpoint {
     @ResponsePayload
     public RemoveUserResponse removeUser(@RequestPayload RemoveUserRequest request) {
         RemoveUserResponse response = new RemoveUserResponse();
-        userService.remove(request.getUser());
+        User user = new User(request.getId());
+        user.setUserAccount(new UserAccount(user.getId()));
+        userService.remove(user);
 
         return response;
     }

@@ -82,11 +82,6 @@
             <version>2.4.0.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.migesok</groupId>
-            <artifactId>jaxb-java-time-adapters</artifactId>
-            <version>1.1.3</version>
-        </dependency>
 
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -220,11 +215,7 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.2.RELEASE</version>
-        </dependency>
+
 
     </dependencies>
 
@@ -270,7 +261,7 @@
                     </sources>
                     <verbose>true</verbose>
 
-                    <outputDirectory>${project.basedir}/src/main/java/beans/soap</outputDirectory>
+                    <outputDirectory>${project.basedir}/src/main/java/beans/models</outputDirectory>
                     <clearOutputDir>false</clearOutputDir>
                     <enableIntrospection>false</enableIntrospection>
                 </configuration>

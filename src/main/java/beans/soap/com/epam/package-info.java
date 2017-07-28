@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://epam.com", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.epam;
+package beans.soap.com.epam;

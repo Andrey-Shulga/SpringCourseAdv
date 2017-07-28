@@ -62,15 +62,15 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link User }
      */
-    public User createUser() {
-        return new User();
+    public beans.soap.com.epam.User createUser() {
+        return new beans.soap.com.epam.User();
     }
 
     /**
      * Create an instance of {@link UserAccount }
      */
-    public UserAccount createUserAccount() {
-        return new UserAccount();
+    public beans.soap.com.epam.UserAccount createUserAccount() {
+        return new beans.soap.com.epam.UserAccount();
     }
 
     /**
@@ -119,24 +119,24 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Auditorium }{@code >}}
      */
     @XmlElementDecl(namespace = "http://epam.com", name = "auditorium")
-    public JAXBElement<Auditorium> createAuditorium(Auditorium value) {
-        return new JAXBElement<Auditorium>(_Auditorium_QNAME, Auditorium.class, null, value);
+    public JAXBElement<beans.models.Auditorium> createAuditorium(beans.models.Auditorium value) {
+        return new JAXBElement<beans.models.Auditorium>(_Auditorium_QNAME, beans.models.Auditorium.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Event }{@code >}}
      */
     @XmlElementDecl(namespace = "http://epam.com", name = "event")
-    public JAXBElement<Event> createEvent(Event value) {
-        return new JAXBElement<Event>(_Event_QNAME, Event.class, null, value);
+    public JAXBElement<beans.models.Event> createEvent(beans.models.Event value) {
+        return new JAXBElement<beans.models.Event>(_Event_QNAME, beans.models.Event.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Rate }{@code >}}
      */
     @XmlElementDecl(namespace = "http://epam.com", name = "rate")
-    public JAXBElement<Rate> createRate(Rate value) {
-        return new JAXBElement<Rate>(_Rate_QNAME, Rate.class, null, value);
+    public JAXBElement<beans.models.Rate> createRate(beans.models.Rate value) {
+        return new JAXBElement<beans.models.Rate>(_Rate_QNAME, beans.models.Rate.class, null, value);
     }
 
     /**

@@ -8,8 +8,6 @@
 
 package beans.soap.com.epam;
 
-import beans.models.User;
-
 import javax.xml.bind.annotation.*;
 
 
@@ -23,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="user" type="{http://epam.com}User"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,32 +30,26 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "user"
+        "id"
 })
 @XmlRootElement(name = "removeUserRequest")
 public class RemoveUserRequest {
 
     @XmlElement(required = true)
-    protected User user;
+    protected long id;
 
     /**
-     * Gets the value of the user property.
-     *
-     * @return possible object is
-     * {@link User }
+     * Gets the value of the id property.
      */
-    public User getUser() {
-        return user;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the user property.
-     *
-     * @param value allowed object is
-     *              {@link User }
+     * Sets the value of the id property.
      */
-    public void setUser(User value) {
-        this.user = value;
+    public void setId(long value) {
+        this.id = value;
     }
 
 }

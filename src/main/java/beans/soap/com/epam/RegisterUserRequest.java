@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.*;
 public class RegisterUserRequest {
 
     @XmlElement(required = true)
-    protected User user;
+    protected beans.soap.com.epam.User user;
 
     /**
      * Gets the value of the user property.
@@ -46,7 +46,7 @@ public class RegisterUserRequest {
      * @return possible object is
      * {@link User }
      */
-    public User getUser() {
+    public beans.soap.com.epam.User getUser() {
         return user;
     }
 
@@ -56,7 +56,7 @@ public class RegisterUserRequest {
      * @param value allowed object is
      *              {@link User }
      */
-    public void setUser(User value) {
+    public void setUser(beans.soap.com.epam.User value) {
         this.user = value;
     }
 

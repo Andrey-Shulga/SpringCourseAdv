@@ -15,12 +15,12 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean(name = "book")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bookSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BookingPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://epam.com/web-service");
-        wsdl11Definition.setSchema(countriesSchema);
+        wsdl11Definition.setTargetNamespace("http://epam.com");
+        wsdl11Definition.setSchema(bookSchema());
         return wsdl11Definition;
     }
 

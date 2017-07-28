@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -43,6 +44,21 @@ public class User implements Serializable{
 
     public User withId(long id) {
         return new User(id, email, name, birthday, password, role);
+    }
+
+    public User(long id) {
+        this.id = id;
+    }
+
+    public User(beans.soap.com.epam.User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.name = user.getName();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.birthday = LocalDate.parse(user.getBirthday(), formatter);
+        this.password = user.getPassword();
+        this.role = user.getRole();
+        this.userAccount = new UserAccount(user.getUserAccount());
     }
 
     public long getId() {

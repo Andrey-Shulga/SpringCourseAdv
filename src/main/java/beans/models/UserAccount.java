@@ -35,6 +35,18 @@ public class UserAccount implements Serializable {
         this.money = money;
     }
 
+    public UserAccount(beans.soap.com.epam.UserAccount userAccount) {
+
+        this.id = userAccount.getId();
+        this.money = userAccount.getMoney();
+    }
+
+    public UserAccount(long id) {
+
+        this.id = id;
+
+    }
+
     public UserAccount withId(long id) {
         return new UserAccount(id, money);
     }
