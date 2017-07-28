@@ -1,19 +1,24 @@
 package beans.models;
 
+import util.LocalDateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:35 PM
- */
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "User", propOrder = {"id", "email", "name", "birthday", "password", "role", "userAccount"})
 public class User implements Serializable{
 
     private long id;
     private String email;
     private String name;
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate birthday;
     private String password;
     private String role;

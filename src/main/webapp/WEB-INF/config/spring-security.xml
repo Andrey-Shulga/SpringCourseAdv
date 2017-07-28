@@ -10,15 +10,14 @@
     <global-method-security secured-annotations="enabled"/>
 
     <http pattern="/resources/**" security="none"/>
+    <http pattern="/ws/**" security="none"/>
 
     <http auto-config="true" use-expressions="true">
 
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <!--<intercept-url pattern="/" access="isFullyAuthenticated() or isAnonymous()"/>
-        <intercept-url pattern="/login.jsp*" access="isFullyAuthenticated() or isAnonymous()"/>
-        <intercept-url pattern="/admin" access="hasRole('ADMIN')"/>
-        <intercept-url pattern="/exitUser*" access="isFullyAuthenticated() or isAnonymous()"/>-->
+
         <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/ws/**" access="permitAll"/>
         <intercept-url pattern="/login.html" access="hasRole('ROLE_ANONYMOUS')"/>
         <intercept-url pattern="/ticketList" access="hasRole('BOOKING_MANAGER')"/>
        <intercept-url pattern="/**" access="hasRole('REGISTERED_USER')"/>

@@ -1,17 +1,15 @@
 package util;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-
-import java.lang.reflect.Type;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
-public class LocalDateAdapter implements JsonSerializer<LocalDate> {
+public class LocalDateAdapter extends XmlAdapter<String, LocalDate> {
 
-    public JsonElement serialize(LocalDate date, Type typeOfSrc, JsonSerializationContext context) {
-        return new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE)); // "yyyy-mm-dd"
+    public LocalDate unmarshal(String v) throws Exception {
+        return LocalDate.parse(v);
+    }
+
+    public String marshal(LocalDate v) throws Exception {
+        return v.toString();
     }
 }

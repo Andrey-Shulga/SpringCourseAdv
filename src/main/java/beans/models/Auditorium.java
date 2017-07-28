@@ -2,15 +2,16 @@ package beans.models;
 
 import util.CsvUtil;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:55 PM
- */
+@XmlRootElement(name = "auditorium")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Auditorium", propOrder = {"id", "name", "seatsNumber", "vipSeats"})
 public class Auditorium implements Serializable {
 
     private long id;

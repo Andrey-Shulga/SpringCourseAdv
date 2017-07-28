@@ -1,8 +1,15 @@
 package beans.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
+@XmlRootElement(name = "userAccount")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "UserAccount", propOrder = {"id", "money"})
 @Entity
 @Table(name = "USER_ACCOUNT")
 public class UserAccount implements Serializable {
