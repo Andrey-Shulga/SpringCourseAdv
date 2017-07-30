@@ -13,7 +13,6 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,8 +37,7 @@ public class PdfHttpMessageConverter extends AbstractHttpMessageConverter<List<T
     @Override
     public boolean canWrite(Class aClass, MediaType mediaType) {
 
-        MediaType pdfType = new MediaType("application", "pdf");
-        return mediaType.equals(pdfType);
+        return true;
     }
 
     @Override
@@ -53,7 +51,7 @@ public class PdfHttpMessageConverter extends AbstractHttpMessageConverter<List<T
 
     @Override
     protected boolean supports(Class<?> aClass) {
-        return List.class.equals(aClass);
+        return true;
     }
 
     @Override
@@ -64,7 +62,6 @@ public class PdfHttpMessageConverter extends AbstractHttpMessageConverter<List<T
     @Override
     protected void writeInternal(List<Ticket> t, HttpOutputMessage httpOutputMessage) throws IOException, HttpMessageNotWritableException {
 
-        OutputStream outputStream = httpOutputMessage.getBody();
         Map<String, Object> map = new HashMap<>();
         map.put("ticketList", t);
         PDFBuilder pdfBuilder = new PDFBuilder();
