@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import util.Converter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static util.Converter.getStrToLocalDateTime;
+import static util.Converter.parseSeatsList;
 
 @Controller
 @SessionAttributes("result")
@@ -62,7 +63,7 @@ public class BookController {
         String date = requestParams.get("date");
         LocalDateTime dateTime = getStrToLocalDateTime(date);
         String seats = requestParams.get("seats");
-        List<Integer> intSeats = parseSeatsList(seats);
+        List<Integer> intSeats = Converter.parseSeatsList(seats);
         String email = requestParams.get("email");
 
         Auditorium auditorium = auditoriumService.getByName(audName);
@@ -82,7 +83,7 @@ public class BookController {
             String eventName = requestParams.get("eventName");
             String audName = requestParams.get("audName");
             String date = requestParams.get("date");
-            LocalDateTime dateTime = getStrToLocalDateTime(date);
+            LocalDateTime dateTime = Converter.getStrToLocalDateTime(date);
             String seats = requestParams.get("seats");
             List<Integer> intSeats = parseSeatsList(seats);
             String email = requestParams.get("email");
@@ -118,7 +119,7 @@ public class BookController {
         String eventName = requestParams.get("eventName");
         String audName = requestParams.get("audName");
         String date = requestParams.get("date");
-        LocalDateTime dateTime = getStrToLocalDateTime(date);
+        LocalDateTime dateTime = Converter.getStrToLocalDateTime(date);
 
         List<Ticket> ticketList = bookingService.getTicketsForEvent(eventName, audName, dateTime);
         map.put("ticketList", ticketList);
@@ -135,16 +136,7 @@ public class BookController {
         return "tickets-list";
     }
 
-    private List<Integer> parseSeatsList(String seats) {
 
-        String regexCommaPattern = "\\s*,\\s*";
-        List<String> strSeats = Arrays.asList(seats.split(regexCommaPattern));
-        return strSeats.stream().map(Integer::parseInt).collect(Collectors.toList());
-    }
 
-    private LocalDateTime getStrToLocalDateTime(String strDate) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        return LocalDateTime.parse(strDate, formatter);
-    }
 }

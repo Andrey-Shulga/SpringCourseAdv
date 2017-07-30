@@ -9,9 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import util.Converter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -34,16 +34,12 @@ public class PdfController {
         String eventName = requestParams.get("eventName");
         String audName = requestParams.get("audName");
         String date = requestParams.get("date");
-        LocalDateTime dateTime = getStrToLocalDateTime(date);
+        LocalDateTime dateTime = Converter.getStrToLocalDateTime(date);
 
         List<Ticket> ticketList = bookingService.getTicketsForEvent(eventName, audName, dateTime);
         map.put("ticketList", ticketList);
         return "pdfView";
     }
 
-    private LocalDateTime getStrToLocalDateTime(String strDate) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        return LocalDateTime.parse(strDate, formatter);
-    }
 }

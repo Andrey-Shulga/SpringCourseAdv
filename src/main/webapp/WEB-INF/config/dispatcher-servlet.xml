@@ -14,7 +14,18 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <mvc:default-servlet-handler/>
     <context:component-scan base-package="beans"/>
-    <mvc:annotation-driven/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>
+            </bean>
+            <bean class="beans.rest.PdfHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/pdf"/>
+            </bean>
+            <!-- Jackson HttpMessageConverter already built in spring -->
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean id="pdfViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
         <property name="order" value="1"/>
@@ -28,6 +39,5 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     </bean>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-
 
 </beans>

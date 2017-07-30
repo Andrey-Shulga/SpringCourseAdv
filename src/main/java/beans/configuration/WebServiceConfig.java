@@ -14,7 +14,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
 
-    @Bean(name = "book")
+    @Bean(name = "booking")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bookSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BookingPort");

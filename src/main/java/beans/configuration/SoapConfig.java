@@ -18,7 +18,7 @@ public class SoapConfig {
     @Bean
     public SoapUser getSoapUser(Jaxb2Marshaller marshaller) {
         SoapUser soapUser = new SoapUser();
-        soapUser.setDefaultUri("http://localhost:8080/ws/book");
+        soapUser.setDefaultUri("http://localhost:8080/ws/booking");
         soapUser.setMarshaller(marshaller);
         soapUser.setUnmarshaller(marshaller);
         return soapUser;

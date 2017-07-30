@@ -27,6 +27,7 @@
 <a href="openPdf">Pdf</a>
 <a href="openFileForm">Batch upload</a>
 <a href="money">Add money</a>
+<a href="ws/booking.wsdl">WSDL Schema</a>
 <hr>
 <table>
     <th>
